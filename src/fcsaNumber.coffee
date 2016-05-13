@@ -69,7 +69,8 @@ fcsaNumberModule.directive 'fcsaNumber',
         decimals = `val.indexOf('.') == -1 ? '' : val.replace(/^-?\d+(?=\.)/, '')`
         wholeNumbers = val.replace /(\.\d+)$/, ''
         commas = wholeNumbers.replace /(\d)(?=(\d{3})+(?!\d))/g, '$1,'
-        "#{commas}#{decimals}"
+        result = '' + commas + decimals
+        result.replace(/,/g,'-').replace(/\./g,',').replace(/-/g,'.') 
 
     {
         restrict: 'A'

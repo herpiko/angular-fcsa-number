@@ -36,7 +36,7 @@
         $scope.$digest();
         angular.element(document.body).append(el);
         angular.element(el).triggerHandler('focus');
-        return expect(el.value).toBe('1000');
+        return expect(el.value).toBe('1.000');
       });
     });
     describe('on blur', function() {
@@ -49,7 +49,7 @@
         angular.element(document.body).append(el);
         angular.element(el).triggerHandler('focus');
         angular.element(el).triggerHandler('blur');
-        return expect(el.value).toBe('1,000');
+        return expect(el.value).toBe('1.000');
       });
       describe('with negative decimal number', function() {
         return it('correctly formats it', function() {
@@ -61,7 +61,7 @@
           angular.element(document.body).append(el);
           angular.element(el).triggerHandler('focus');
           angular.element(el).triggerHandler('blur');
-          return expect(el.value).toBe('-1,000.2');
+          return expect(el.value).toBe('-1.000,2');
         });
       });
       return describe('when more than 3 decimals', function() {
@@ -74,7 +74,7 @@
           angular.element(document.body).append(el);
           angular.element(el).triggerHandler('focus');
           angular.element(el).triggerHandler('blur');
-          return expect(el.value).toBe('1,234.5678');
+          return expect(el.value).toBe('1.234,5678');
         });
       });
     });
@@ -228,8 +228,8 @@
         it('prepends the value', function() {
           $scope.model.number = 1000;
           form = compileForm("{ prepend: \"$\" }");
-          expect(form.number.$viewValue).toBe('$1,000');
-          return expect($scope.model.number).toBe(1000);
+          expect(form.number.$viewValue).toBe('$1.000');
+          return expect($scope.model.number).toBe(1.000);
         });
         return it('removes the prepend value on focus', function() {
           var el;
@@ -239,7 +239,7 @@
           $scope.$digest();
           angular.element(document.body).append(el);
           angular.element(el).triggerHandler('focus');
-          return expect(el.value).toBe('1000');
+          return expect(el.value).toBe('1.000');
         });
       });
       return describe('append', function() {

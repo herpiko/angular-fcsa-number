@@ -1,4 +1,4 @@
-/*! angular-fcsa-number (version 1.5.3) 2014-10-17 */
+/*! angular-fcsa-number (version 1.5.3) 2016-05-13 */
 (function() {
   var fcsaNumberModule,
     __hasProp = {}.hasOwnProperty;
@@ -97,11 +97,12 @@
         };
       };
       addCommasToInteger = function(val) {
-        var commas, decimals, wholeNumbers;
+        var commas, decimals, result, wholeNumbers;
         decimals = val.indexOf('.') == -1 ? '' : val.replace(/^-?\d+(?=\.)/, '');
         wholeNumbers = val.replace(/(\.\d+)$/, '');
         commas = wholeNumbers.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-        return "" + commas + decimals;
+        result = '' + commas + decimals;
+        return result.replace(/,/g, '-').replace(/\./g, ',').replace(/-/g, '.');
       };
       return {
         restrict: 'A',

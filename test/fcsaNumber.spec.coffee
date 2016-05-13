@@ -30,7 +30,7 @@ describe 'fcsaNumber', ->
       $scope.$digest()
       angular.element(document.body).append el
       angular.element(el).triggerHandler 'focus'
-      expect(el.value).toBe '1000'
+      expect(el.value).toBe '1.000'
 
   describe 'on blur', ->
     it 'adds commas', ->
@@ -41,7 +41,7 @@ describe 'fcsaNumber', ->
       angular.element(document.body).append el
       angular.element(el).triggerHandler 'focus'
       angular.element(el).triggerHandler 'blur'
-      expect(el.value).toBe '1,000'
+      expect(el.value).toBe '1.000'
 
     describe 'with negative decimal number', ->
       it 'correctly formats it', ->
@@ -52,7 +52,7 @@ describe 'fcsaNumber', ->
         angular.element(document.body).append el
         angular.element(el).triggerHandler 'focus'
         angular.element(el).triggerHandler 'blur'
-        expect(el.value).toBe '-1,000.2'
+        expect(el.value).toBe '-1.000,2'
 
     describe 'when more than 3 decimals', ->
       it 'does not add commas to the decimals', ->
@@ -63,7 +63,7 @@ describe 'fcsaNumber', ->
         angular.element(document.body).append el
         angular.element(el).triggerHandler 'focus'
         angular.element(el).triggerHandler 'blur'
-        expect(el.value).toBe '1,234.5678'
+        expect(el.value).toBe '1.234,5678'
 
   describe 'no options', ->
     it 'validates positive number', ->
@@ -174,8 +174,8 @@ describe 'fcsaNumber', ->
       it 'prepends the value', ->
         $scope.model.number = 1000
         form = compileForm "{ prepend: \"$\" }"
-        expect(form.number.$viewValue).toBe '$1,000'
-        expect($scope.model.number).toBe 1000
+        expect(form.number.$viewValue).toBe '$1.000'
+        expect($scope.model.number).toBe 1.000
 
       it 'removes the prepend value on focus', ->
         $scope.model.number = 1000
@@ -184,7 +184,7 @@ describe 'fcsaNumber', ->
         $scope.$digest()
         angular.element(document.body).append el
         angular.element(el).triggerHandler 'focus'
-        expect(el.value).toBe '1000'
+        expect(el.value).toBe '1.000'
 
     describe 'append', ->
       it 'appends the value', ->
